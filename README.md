@@ -1,3 +1,3 @@
 # EsKoOnG.GitHub.io
-![WeBareBears](/image/wbb.jpg)
+![WeBareBears](/images/wbb.jpg)
 ## Biography
