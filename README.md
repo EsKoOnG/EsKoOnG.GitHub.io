@@ -1,2 +1,3 @@
 # EsKoOnG.GitHub.io
-## Talk about Software Security
+![WeBareBears](/image/wbb.jpg)
+## Biography
