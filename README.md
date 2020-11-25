@@ -23,7 +23,7 @@
 
 **Technical Skills**
 |Expert|Proficient|Novice|
-| :---: | :---: | :---: |
+| :--------------------: | :--------------------: | :--------------------: |
 | Infrastructure | Management | Programing |
 | Network Security | Documentation | |
 | Information Security | Project Planning | |
