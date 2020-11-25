@@ -1,4 +1,10 @@
 # EsKoOnG.GitHub.io
+This is an intro sentence to my Wiki page.
+
+[[_TOC_]]
+
+---
+
 ![ThisIsMe](/images/me.png)
 ## Biography
 
@@ -36,5 +42,4 @@
 
 ---
 
-**Linkedin**
-https://www.linkedin.com/in/piyawit-khumkrong-247973117/
+**Linkedin** _https://www.linkedin.com/in/piyawit-khumkrong-247973117/_
