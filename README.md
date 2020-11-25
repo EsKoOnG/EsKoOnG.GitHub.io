@@ -4,23 +4,23 @@
 ### Mr.Piyawit Khumkrong
 <p>Over 10 years of experience in IT and IT Security in management, practices, research and development, and implementation with a demonstrated history of working in the computer and network security for industry, corparate, banking, hostpital, and government. </p>
 
-> **Education**
-> [x] Bachelor of Business administration (BBA), Information System (Software Development)
+**Education**
+[x] Bachelor of Business administration (BBA), Information System (Software Development)
 Rajamangala University of Technology Rattanakosin, Klai Kang Won Palace Campus (2006-2009)
-> [ ] ~~Master of Science (MSc), Computer Networks Engineering
+[ ] ~~Master of Science (MSc), Computer Networks Engineering
 Mahanakorn University of Technology (2010-2013)~~
-> [ ] Master of Science (MSc), Cybersecurity (Cybersecurity Engineering)
+[ ] Master of Science (MSc), Cybersecurity (Cybersecurity Engineering)
 Mahanakorn University of Technology (2020-Present)
 
-> **Genaral Skills**
-> + Critical Thinking
-> + Problem Solving
-> + Leadership
-> + Collaboration
-> + Teamwork
-> + Attention to Details
-> + Professionalism
-> + Strong Work Ethic
+**Genaral Skills**
+1. Critical Thinking
+1. Problem Solving
+1. Leadership
+1. Collaboration
+1. Teamwork
+1. Attention to Details
+1. Professionalism
+1. Strong Work Ethic
 
 **Technical Skills**
 |Expert|Proficient|Novice|
@@ -31,9 +31,9 @@ Mahanakorn University of Technology (2020-Present)
 | Operating Systems | Task Management | |
 | Applications | Quality Control | |
 
-> **Certification**
-> + CompTIA Security+
-> + CompTIA CTT+
+**Certification**
++ CompTIA Security+
++ CompTIA CTT+
 
 ---
 
