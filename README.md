@@ -1,8 +1,6 @@
 # EsKoOnG.GitHub.io
-This is an intro sentence to my Wiki page.
 
-[[_TOC_]]
-
+Welcome to my Wiki page.
 ---
 
 ![ThisIsMe](/images/me.png)
@@ -42,4 +40,4 @@ This is an intro sentence to my Wiki page.
 
 ---
 
-**Linkedin** _https://www.linkedin.com/in/piyawit-khumkrong-247973117/_
+**_Linkedin_** _https://www.linkedin.com/in/piyawit-khumkrong-247973117/_
