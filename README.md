@@ -1,7 +1,4 @@
-# EsKoOnG.GitHub.io
-
-Welcome to my Wiki page.
----
+# EsKoOnG.GitHub.io 
 
 ![ThisIsMe](/images/me.png)
 ## Biography
