@@ -1,4 +1,4 @@
-# Warning: line endings have changed from ‘LF’ to ‘CRLF’.
+﻿# Warning: line endings have changed from ‘LF’ to ‘CRLF’.
 คำเตือน : การสิ้นสุดบรรรทัดถูกเปลี่ยน จาก LF เป็น CRLF
 
 ---
