@@ -26,7 +26,7 @@
 
 |Expert|Proficient|Novice|
 | :--------------------: | :--------------------: | :--------------------: |
-| Infrastructure | Management | Programing |
+| Infrastructure | Management | Programming |
 | Network Security | Documentation | |
 | Information Security | Project Planning | |
 | Operating Systems | Task Management | |
