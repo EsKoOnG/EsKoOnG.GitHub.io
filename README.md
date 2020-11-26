@@ -1,7 +1,6 @@
 # EsKoOnG.GitHub.io 
 
 ![ThisIsMe](/images/me.png)
-## Biography
 
 ### Mr.Piyawit Khumkrong [Es]
 
