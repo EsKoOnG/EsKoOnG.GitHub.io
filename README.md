@@ -12,7 +12,7 @@
 - [ ]  ~~Master of Science (MSc), Computer Networks Engineering <br>Mahanakorn University of Technology (2010-2013)~~
 - [ ]  Master of Science (MSc), Cybersecurity (Cybersecurity Engineering)<br>Mahanakorn University of Technology (2020-Present)
 
-**Genaral Skills**
+**General Skills**
 1. Critical Thinking
 1. Problem Solving
 1. Leadership
