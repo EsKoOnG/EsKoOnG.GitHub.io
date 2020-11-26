@@ -35,6 +35,8 @@
 + CompTIA Security+
 + CompTIA CTT+
 
+**Article**
++ [Warning: line endings have changed from ‘LF’ to ‘CRLF’.](https://eskoong.github.io/eol)
 ---
 
 **_Linkedin_** _https://www.linkedin.com/in/piyawit-khumkrong-247973117/_
