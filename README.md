@@ -23,6 +23,7 @@
 1. Strong Work Ethic
 
 **Technical Skills**
+
 |Expert|Proficient|Novice|
 | :--------------------: | :--------------------: | :--------------------: |
 | Infrastructure | Management | Programing |
