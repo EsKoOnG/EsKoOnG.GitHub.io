@@ -35,7 +35,7 @@
 + CompTIA Security+
 + CompTIA CTT+
 
-**Article**
+**Articles**
 + [Warning: line endings have changed from ‘LF’ to ‘CRLF’.](https://eskoong.github.io/eol)
 ---
 
