@@ -60,5 +60,3 @@ x คือ EOL ที่ใช้งานอยู่ในปัจจุบ�
 Reference : 
 - https://en.wikipedia.org/wiki/Newline
 - https://stackoverflow.com/questions/1967370/git-replacing-lf-with-crlf
-
----
