@@ -3,7 +3,7 @@
 ![ThisIsMe](/images/me.png)
 ## Biography
 
-### Mr.Piyawit Khumkrong
+### Mr.Piyawit Khumkrong [Es]
 
 > Over 10 years of experience in IT and IT Security in management, practices, research and development, and implementation with a demonstrated history of working in the computer and network security for industry, corparate, banking, hostpital, and government.
 
@@ -26,7 +26,7 @@
 
 |Expert|Proficient|Novice|
 | :--------------------: | :--------------------: | :--------------------: |
-| Infrastructure | Management | Programing |
+| Infrastructure | Management | Programming |
 | Network Security | Documentation | |
 | Information Security | Project Planning | |
 | Operating Systems | Task Management | |
