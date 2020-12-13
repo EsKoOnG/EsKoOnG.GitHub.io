@@ -1,4 +1,4 @@
-# **Data Encryption** *(symetric)* test case
+# **Data Encryption** *(symmetric)* test case
 
 |Preconditions|Inputs|Action|Expected Results|Postconditions|
 | :-- | :-- | :-- | :-- | :-- |
