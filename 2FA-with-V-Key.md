@@ -4,25 +4,6 @@ and is individualized for each employee. The cloud platform provides operational
 in the deployment of Trusted Identity services. It also optimises the cost of implementation
 and maintenance, and focuses on ensuring usability on any IOS or Android device.</p>
 
-## MODERN THREATS CALLS FOR MODERN SECURITY 
-|STRONG SECURITY|EASE-OF-USE|SEAMLESS USER EXPERIENCE|
-|:-|:-|:-|
-|Military grade security<br>
- - Used by regional banks
- and governments
-Eliminates need for
-passwords
- - Identity can be verified
- through either
- fingerprint, facial
- recognition or passcode
-Stay updated against the
-latest threats
- - Over-the-air updates
- ensures that you are
- always protected with
- the latest security| | 
-
 ## Experience V-OS Trusted Identity Services in 5 simple steps.
 1. User launches VPN/Microsoft 365/Enterprise software on laptop
 2. Authentication process is triggered and user inputs Username & Password (1FA) on laptop
@@ -49,8 +30,14 @@ through the V-Key App
 1. VPN client access is granted.
 
 ## 2FA in Actions
+
+### 1. Login application portal.
 ![PulseSecure](/images/pulse-secure.png)
+
+### 2. V-Key application push notification to input pin.
 ![V-Key](/images/v-key.png)
+
+### 3. Successful with 2FA.
 
 
 ##### Members
