@@ -4,14 +4,36 @@ and is individualized for each employee. The cloud platform provides operational
 in the deployment of Trusted Identity services. It also optimises the cost of implementation
 and maintenance, and focuses on ensuring usability on any IOS or Android device.</p>
 
-## How V-Key Secures VPN Connections Using V-Key 2FA
+## MODERN THREATS CALLS FOR MODERN SECURITY 
+|STRONG SECURITY|EASE-OF-USE|SEAMLESS USER EXPERIENCE|
+|:-|:-|:-|
+|Military grade security<br>
+ - Used by regional banks
+ and governments
+Eliminates need for
+passwords
+ - Identity can be verified
+ through either
+ fingerprint, facial
+ recognition or passcode
+Stay updated against the
+latest threats
+ - Over-the-air updates
+ ensures that you are
+ always protected with
+ the latest security| | 
+
+## Experience V-OS Trusted Identity Services in 5 simple steps.
+1. User launches VPN/Microsoft 365/Enterprise software on laptop
+2. Authentication process is triggered and user inputs Username & Password (1FA) on laptop
+3. Upon successful verification of 1FA, V-Key App on user’s mobile device will receive 2FA
+push notification from V-OS Cloud
+4. User need to verify (either fingerprint, facial recognition or passcode) their identity
+through the V-Key App
+5. When the 2FA is successfully verified, user will be able to access the services
+
 ![V-key](https://www.v-key.com/wp-content/uploads/2019/07/Layman-Terms-V-Key-2FA-copy.jpg)
 
-1. User launches VPN software on laptop to access corporate network
-1. Authentication process starts with user’s inputs of Username & Password (1FA) on laptop,
-1. Upon successful verification of 1FA, V-Key App on user’s mobile device will be activate to request for 2FA
-1. User will further verify (either facial/fingerprint biometrics or passcode) their identity through the V-Key App1.
-1. When the 2FA is successfully verified, user will be able to access the corporate network
 
 ## 2FA for VPN/RADIUS Flow Diagram
 ![VPN/RADIUS](https://cloud.v-key.com/assets/docs/static/img/f447b8860e9e9de9326977bad7c2b415.png)
@@ -25,3 +47,12 @@ and maintenance, and focuses on ensuring usability on any IOS or Android device.
 1. V-OS Cloud IDM receives authentication respond.
 1. V-OS Cloud IDM replies to the RADIUS server.
 1. VPN client access is granted.
+
+## 2FA in Actions
+![PulseSecure](/images/pulse-secure.png)
+![V-Key](/images/v-key.png)
+
+
+##### Members
+- Bhoomjit Bhoominath
+- Piyawit Khumkrong
