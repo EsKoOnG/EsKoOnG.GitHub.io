@@ -5,7 +5,7 @@
 
 ## Formatting SQL queries is security-sensitive
 
-Formatting strings used as SQL queries is security-sensitive. It has led in the past to the following vulnerabilities:
+การจัดรูปแบบข้อความในการใช้งานคำสั่ง SQL queries มีผลกระทบด้านความปลอดภัยและมันเคยก่อให้เกิดช่องโหว่ในอดีตดังต่อไปนี้
 
 * [CVE-2018-9019](http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-9019)
 
@@ -13,26 +13,26 @@ Formatting strings used as SQL queries is security-sensitive. It has led in the 
 
 * [CVE-2017-5611](http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5611)
 
-SQL queries often need to use a hardcoded SQL string with a dynamic parameter coming from a user request. Formatting a string to add those parameters to the request is a bad practice as it can result in an SQL injection. The safe way to add parameters to a SQL query is to use SQL binding mechanisms.
+SQL queries บ่อยครั้งที่ถูกใช้โดยการเขียนคำสั่ง SQL string ลงไปใน Code ตรงๆ พร้อมกับตัวแปรที่รอรับคำร้องขอจากผู้ใช้งานซึ่งการใช้งานในลักษณะนี้เป็นวิธีการที่ไม่ดีและส่งผลให้ผู้ไม่หวังดีสามารถโจมตีด้วยเทคนิค SQL Injection ได้ และวิธีที่ปลอดภัยในการสืบค้นข้อมูล SQL ให้ใช้การผูกเป็นคำสั่งทดแทนการรับค่าโดยตรง
 
-**Ask Yourself Whether**
+**ลองถามตัวเองดู**
 
-* the SQL query is built using string formatting technics, such as concatenating variables.
-* some of the values are coming from an untrusted source and are not sanitized.
+* คำสั่ง SQL query ถูกสร้างโดยการใช้การจัดรูปแบบของ string เช่น การใช้ตัวแปรมาต่อภายในคำสั่งโดยตรง
+* การรับค่าบางค่ามาจากแหล่งที่ไม่น่าเชื่อถือได้และไม่มีการตรวจสอบหรือทำให้ถูกต้องก่อนการประมวลผล
 
-There is a risk if you answered yes to any of those questions.
+มันเป็นความเสี่ยงหากคุณตอบว่า "ใช่" จาก 2 คำถามข้างต้น
 
-**Recommended Secure Coding Practices**
+**คำแนะนำในการเขียน Code ให้ปลอดภัย**
 
-* Avoid building queries manually using formatting technics. If you do it anyway, do not include user input in this building process.
-* Use parameterized queries, prepared statements, or stored procedures whenever possible.
-* You may also use ORM frameworks such as Hibernate which, if used correctly, reduce injection risks.
-* Avoid executing SQL queries containing unsafe input in stored procedures or functions.
-* Sanitize every unsafe input.
+* หลีกเลี่ยงการสร้างคำสั่งแบบกำหนดเองโดยใช้เทคนิคการจัดรูปแบบ ถ้าคุณจำเป็นต้องทำ ก็ไม่ควรรับค่าจากผู้ใช้งานไปเป็นส่วนนึงของการทำขั้นตอนนี้
+* กำหนดคำสั่ง queries ให้เป็นค่า parameter ที่ถูกกำหนดขอบเขตอย่างชัดเจน เฉพาะที่ต้องการใช้งาน หรือถูกกำหนดเป็นขั้นตอนไว้แล้วเมื่อทำได้
+* คุณอาจจะใช้ Object–relational mapping (ORM) frameworks เช่น Hibernate ซึ่งหากสามารถใช้มันได้อย่างถูกต้องก็จะสามารถช่วยลดความเสี่ยงในส่วนนี้ได้
+* หลีกเลี่ยงการประมวลผลสืบค้นข้อมูล SQL ที่ประกอบไปด้วยขั้นตอนการเก็บค่าหรือฟังก์ชั่นที่ใช้ช่องทาง input ที่ไม่ปลอดภัย 
+* คัดกรองและตรวจสอบข้อมูลทุกช่องทางที่ input ไม่ปลอดภัย
 
-You can also reduce the impact of an attack by using a database account with low privileges.
+คุณสามารถลดผลกระทบของการโจมตีได้โดยการกำหนดให้บัญชีผู้ใช้ฐานข้อมูลด้วยสิทธิ์ที่ต่ำที่สุด
 
-**Sensitive Code Example**
+**ตัวอ่างที่ไม่ปลอดภัย**
 ```
 // === MySQL ===
 const mysql = require('mysql');
@@ -48,7 +48,7 @@ pgcon.connect();
 pgcon.query('SELECT * FROM users WHERE id = ' + userinput, (err, res) => {}); // Sensitive
 ```
 
-**Compliant Solution**
+**แนวทางแก้ไขที่ถูกต้อง**
 ```
 // === MySQL ===
 const mysql = require('mysql');
@@ -63,15 +63,8 @@ const pgcon = new pg.Client({ host: host, user: user, password: pass, database: 
 pgcon.connect();
 pgcon.query('SELECT name FROM users WHERE id = $1', [userinput], (err, res) => {});
 ```
-**Exceptions**
 
-This rule's current implementation does not follow variables. It will only detect SQL queries which are formatted directly in the function call.
-```
-const sql = 'SELECT * FROM users WHERE id = ' + userinput;
-mycon.query(sql, (err, res) => {}); // Sensitive but no issue is raised.
-```
-
-**See**
+**เพิ่มเติม**
 * [OWASP Top 10 2017 Category A1](https://www.owasp.org/index.php/Top_10-2017_A1-Injection) - Injection
 * [MITRE, CWE-89](http://cwe.mitre.org/data/definitions/89) - Improper Neutralization of Special Elements used in an SQL Command
 * [MITRE, CWE-564](http://cwe.mitre.org/data/definitions/564.html) - SQL Injection: Hibernate
@@ -81,6 +74,6 @@ mycon.query(sql, (err, res) => {}); // Sensitive but no issue is raised.
 * [SANS Top 25](https://www.sans.org/top25-software-errors/#cat1) - Insecure Interaction Between Components
 * Derived from FindSecBugs rules [Potential SQL/JPQL Injection (JPA)](http://h3xstream.github.io/find-sec-bugs/bugs.htm#SQL_INJECTION_JPA), [Potential SQL/JDOQL Injection (JDO)](http://h3xstream.github.io/find-sec-bugs/bugs.htm#SQL_INJECTION_JDO), [Potential SQL/HQL Injection (Hibernate)](http://h3xstream.github.io/find-sec-bugs/bugs.htm#SQL_INJECTION_HIBERNATE)
 
-**Reference**
+**แหล่งที่มา**
 
 [<img src="/images/sonarqube.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-2077)
