@@ -82,4 +82,4 @@ mycon.query(sql, (err, res) => {}); // Sensitive but no issue is raised.
 
 **reference**
 
-[<img src="/images/sonarqube.svg" alt="SonarQube" height="30">](https://rules.sonarsource.com/javascript/RSPEC-2077)
+[<img src="/images/sonarqube.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-2077)
