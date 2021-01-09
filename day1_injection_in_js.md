@@ -5,7 +5,7 @@
 
 ![JavaScript](/images/JS.gif)
 
-## Formatting SQL queries is security-sensitive
+## Formatting SQL queries is security-sensitive.
 
 การจัดรูปแบบข้อความในการใช้งานคำสั่ง SQL queries มีผลกระทบด้านความปลอดภัยและมันเคยก่อให้เกิดช่องโหว่ในอดีตดังต่อไปนี้
 
