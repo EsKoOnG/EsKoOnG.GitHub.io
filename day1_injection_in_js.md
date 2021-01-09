@@ -81,6 +81,6 @@ mycon.query(sql, (err, res) => {}); // Sensitive but no issue is raised.
 * [SANS Top 25](https://www.sans.org/top25-software-errors/#cat1) - Insecure Interaction Between Components
 * Derived from FindSecBugs rules [Potential SQL/JPQL Injection (JPA)](http://h3xstream.github.io/find-sec-bugs/bugs.htm#SQL_INJECTION_JPA), [Potential SQL/JDOQL Injection (JDO)](http://h3xstream.github.io/find-sec-bugs/bugs.htm#SQL_INJECTION_JDO), [Potential SQL/HQL Injection (Hibernate)](http://h3xstream.github.io/find-sec-bugs/bugs.htm#SQL_INJECTION_HIBERNATE)
 
-**reference**
+**Reference**
 
 [<img src="/images/sonarqube.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-2077)
