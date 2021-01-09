@@ -1,10 +1,10 @@
-# [Code4Sec Week](https://www.facebook.com/hashtag/code4sec)
-# Day 2 - Broken Authentication in JavaScript.
+# [Code4Sec Week](https://www.facebook.com/hashtag/code4sec) / Day 2
+# Broken Authentication in JavaScript.
 [#NEIS0736](https://www.facebook.com/hashtag/neis0736) [#NECS0736](https://www.facebook.com/hashtag/necs0736)
 
 ![JavaScript](/images/JS.gif)
 
-## Hard-coded credentials are security-sensitive
+## Hard-coded credentials are security-sensitive.
 
 Because it is easy to extract strings from an application source code or binary, credentials should not be hard-coded. This is particularly true for applications that are distributed or that are open-source.
 
