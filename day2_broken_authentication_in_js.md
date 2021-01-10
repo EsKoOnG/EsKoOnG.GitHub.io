@@ -5,34 +5,31 @@
 
 ## Hard-coded credentials are security-sensitive.
 
-Because it is easy to extract strings from an application source code or binary, credentials should not be hard-coded. This is particularly true for applications that are distributed or that are open-source.
+เพราะมันง่ายมากที่จะถูกแกะค่าใน Source Code จาก Application หรือ Binary และ Credentials ไม่ควรใส่ไว้ใน Code ตรง ๆ โดยเฉพาะอย่างยิ่งสำหรับแอปพลิเคชั่นที่ถูกแจกจ่ายหรือแบบ Opensource
 
-In the past, it has led to the following vulnerabilities:
+ในอดีตมันมีช่องโหว่ที่ผ่านมาดังนี้:
 
-* CVE-2019-13466
-* CVE-2018-15389
+* [CVE-2019-13466](http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-13466)
+* [CVE-2018-15389](http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-15389)
 
-Credentials should be stored outside of the code in a configuration file, a database, or a management service for secrets.
+Credential ควรถูกจัดเก็บไว้ในไฟล์การตั้งค่า ฐานข้อมูล หรือการจัดการบริการสำหรับความลับโดยเฉพาะ
 
-This rule flags instances of hard-coded credentials used in database and LDAP connections. It looks for hard-coded credentials in connection strings, and for variable names that match any of the patterns from the provided list.
+**ลองถามตัวเองดู**
 
-It's recommended to customize the configuration of this rule with additional credential words such as "oauthToken", "secret", ...
+* มี Credentials ที่อนุญาตให้เข้าถึงส่วนประกอบที่สำคัญ เช่น ฐานข้อมูล พื้นที่จัดเก็บไฟล์ และ API หรือ บริการต่าง ๆ อยู่ใน Source Code
+* มี Credentials ที่ถูกใช้ในระบบที่กำลังให้บริการจริง อยู่ใน Source Code
+* แอปพลิเคชั่นถูกแจกจ่ายออกไปไม่ได้อัพเดท Credentials 
 
-**Ask Yourself Whether**
+นั่นคือความเสี่ยงหากคุณตอบใช่ในคำถามใดคำถามนึง
 
-Credentials allows access to a sensitive component like a database, a file storage, an API or a service.
-Credentials are used in production environments.
-Application re-distribution is required before updating the credentials.
-There is a risk if you answered yes to any of those questions.
+**คำแนะนำในการเขียน Code ให้ปลอดภัย**
 
-**Recommended Secure Coding Practices**
+* จัดเก็บ credentials ในไฟล์การตั้งค่าไม่ใส่รวมกับที่จัดเก็บ Source Code
+* จัดเก็บ credentials ในฐานข้อมูล
+* ใช้งานระบบบริหารจัดการความลับของผู้ให้บริการคลาวด์ของคุณ
+* ถ้ารหัสผ่านถูกเปิดเผยผ่าน Source Code ที่ถูกแจกจ่ายออกไป ให้เปลี่ยนทันที
 
-Store the credentials in a configuration file that is not pushed to the code repository.
-Store the credentials in a database.
-Use your cloud provider's service for managing secrets.
-If the a password has been disclosed through the source code: change it.
-
-**Sensitive Code Example**
+**ตัวอย่างที่ไม่ปลอดภัย**
 ```
 var mysql = require('mysql');
 
@@ -48,7 +45,7 @@ var connection = mysql.createConnection(
 connection.connect();
 ```
 
-**Compliant Solution**
+**แนวทางแก้ไขที่ถูกต้อง*
 
 ```
 var mysql = require('mysql');
@@ -62,13 +59,13 @@ var connection = mysql.createConnection({
 connection.connect();
 ```
 
-**See**
-* OWASP Top 10 2017 Category A2 - Broken Authentication
-* MITRE, CWE-798 - Use of Hard-coded Credentials
-* MITRE, CWE-259 - Use of Hard-coded Password
-* CERT, MSC03-J. - Never hard code sensitive information
-* SANS Top 25 - Porous Defenses
-* Derived from FindSecBugs rule Hard Coded Password
+**เพิ่มเติม**
+* [OWASP Top 10 2017 Category A2](https://www.owasp.org/index.php/Top_10-2017_A2-Broken_Authentication) - Broken Authentication
+* [MITRE, CWE-798](http://cwe.mitre.org/data/definitions/798) - Use of Hard-coded Credentials
+* [MITRE, CWE-259](http://cwe.mitre.org/data/definitions/259) - Use of Hard-coded Password
+* [CERT, MSC03-J.](https://wiki.sei.cmu.edu/confluence/x/OjdGBQ) - Never hard code sensitive information
+* [SANS Top 25](https://www.sans.org/top25-software-errors/#cat3) - Porous Defenses
+* Derived from FindSecBugs rule [Hard Coded Password](http://h3xstream.github.io/find-sec-bugs/bugs.htm#HARD_CODE_PASSWORD)
 
 **แหล่งที่มา**
 
