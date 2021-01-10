@@ -45,7 +45,7 @@ var connection = mysql.createConnection(
 connection.connect();
 ```
 
-**แนวทางแก้ไขที่ถูกต้อง*
+**แนวทางแก้ไขที่ถูกต้อง**
 
 ```
 var mysql = require('mysql');
