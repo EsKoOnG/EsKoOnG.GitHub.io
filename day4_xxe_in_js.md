@@ -5,9 +5,9 @@
 
 ## XML parsers should not be vulnerable to XXE attacks
 
-[XML specification](https://www.w3.org/TR/xml/) allows the use of entities that can be [internal](https://www.w3.org/TR/xml/#sec-internal-ent) or [external](https://www.w3.org/TR/xml/#sec-external-ent) (file system / network access ...) which could lead to vulnerabilities such as confidential file disclosures or [SSRFs](https://www.owasp.org/index.php/Server_Side_Request_Forgery).
+[XML specification](https://www.w3.org/TR/xml/) อนุญาตให้ใช้ entities ที่เป็น [internal](https://www.w3.org/TR/xml/#sec-internal-ent) หรือ [external](https://www.w3.org/TR/xml/#sec-external-ent) (file system / network access ...) ซึ่งอาจนำไปสู่ช่องโหว่เช่น ไฟล์ชั้นความลับถูกเปิดเผยหรือ[SSRFs](https://www.owasp.org/index.php/Server_Side_Request_Forgery).
 
-Example in this XML document, an external entity read the /etc/passwd file:
+ตัวอย่างในไฟล์ XML นี้ entity ภายนอกสามารถอ่านไฟล์ /etc/passwd ได้:
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -22,7 +22,7 @@ Example in this XML document, an external entity read the /etc/passwd file:
 </note>
 ```
 
-In this XSL document, network access is allowed which can lead to SSRF vulnerabilities:
+ในไฟล์ XSL นี้อนุญาตให้เครือข่ายเข้าถึงได้ ซึ่งอาจนำไปสู่ช่องโหว่ SSRF :
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -36,7 +36,7 @@ In this XSL document, network access is allowed which can lead to SSRF vulnerabi
 It is recommended to disable access to external entities and network access in general.
 ```
 
-**Noncompliant Code Example**
+**ตัวอย่างที่ไม่ปลอดภัย**
 
 [libxmljs](https://github.com/libxmljs/libxmljs) module:
 
@@ -49,7 +49,7 @@ var xml = fs.readFileSync('xxe.xml', 'utf8');
 var xmlDoc = libxmljs.parseXmlString(xml, { noblanks: true, noent: true, nocdata: true }); // Noncompliant: noent set to true
 ```
 
-**Compliant Solution**
+**แนวทางแก้ไขที่ถูกต้อง**
 
 [libxmljs](https://github.com/libxmljs/libxmljs) module:
 
@@ -62,7 +62,7 @@ var xml = fs.readFileSync('xxe.xml', 'utf8');
 var xmlDoc = libxmljs.parseXmlString(xml); // Compliant: noent set to false by default
 ```
 
-**See**
+**เพิ่มเติม**
 
 * [OWASP Top 10 2017 Category A4](https://www.owasp.org/index.php/Top_10-2017_A4-XML_External_Entities_(XXE)) - XML External Entities (XXE)
 * [OWASP XXE Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html)
