@@ -5,7 +5,7 @@
 
 ## XML parsers should not be vulnerable to XXE attacks
 
-[XML specification](https://www.w3.org/TR/xml/) อนุญาตให้ใช้ entities ที่เป็น [internal](https://www.w3.org/TR/xml/#sec-internal-ent) หรือ [external](https://www.w3.org/TR/xml/#sec-external-ent) (file system / network access ...) ซึ่งอาจนำไปสู่ช่องโหว่เช่น ไฟล์ชั้นความลับถูกเปิดเผยหรือ[SSRFs](https://www.owasp.org/index.php/Server_Side_Request_Forgery).
+[XML specification](https://www.w3.org/TR/xml/) อนุญาตให้ใช้ entities ที่เป็น [internal](https://www.w3.org/TR/xml/#sec-internal-ent) หรือ [external](https://www.w3.org/TR/xml/#sec-external-ent) (file system / network access ...) ซึ่งอาจนำไปสู่ช่องโหว่เช่น ไฟล์ชั้นความลับถูกเปิดเผย หรือ [SSRFs](https://www.owasp.org/index.php/Server_Side_Request_Forgery).
 
 ตัวอย่างในไฟล์ XML นี้ entity ภายนอกสามารถอ่านไฟล์ /etc/passwd ได้:
 
