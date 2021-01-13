@@ -5,46 +5,30 @@
 
 ## Using publicly writable directories is security-sensitive
 
-Operating systems have global directories where any user has write access. Those folders are mostly used as temporary storage areas like /tmp in Linux based systems. An application manipulating files from these folders is exposed to race conditions on filenames: a malicious user can try to create a file with a predictable name before the application does. A successful attack can result in other files being accessed, modified, corrupted or deleted. This risk is even higher if the application runs with elevated permissions.
+ระบบปฏิบัติการโดยทั่วไปแล้วจะมีพื้นที่ส่วนกลางที่ไม่ว่าผู้ใช้ไหนก็สามารถมีสิทธิ์เข้าถึงและเขียนไฟล์ได้ ซึ่งโฟลเดอร์เหล่านั้นส่วนใหญ่จะเป็นพื้นที่ใช้งานชั่วคราวเช่น /tmp ใน Linux based โดยแอปพลิเคชั่นจะที่มีการจัดการไฟล์ในโฟลเดอร์เหล่านี้อาจนำไปสู่ race conditions บนชื่อไฟล์ เช่น ผู้ไม่ประสงค์ดีพยายามที่จะเดาชื่อไฟล์ที่จะถูกสร้างโดยแอปพลิเคชั่น และสร้างมันก่อนที่แอปพลิเคชั่นจะสร้าง หากทำสำเร็จผลลัพธ์ที่ได้คือ ไฟล์ที่ถูกสร้างก็จะสามารถ เข้าถึงได้ แก้ไขได้ ทำให้เสียหายหรือลบได้ ความเสี่ยงก็จะสูงขึ้นไปอีกหากแอปพลิเคชั่นนั้นใช้งานด้วยสิทธิ์สูงของระบบ
 
-In the past, it has led to the following vulnerabilities:
+ในอดีตที่ผ่านมาเคยเกิดช่องโหว่ที่เกี่ยวของดังนี้
 
 * [CVE-2012-2451](https://nvd.nist.gov/vuln/detail/CVE-2012-2451)
 * [CVE-2015-1838](https://nvd.nist.gov/vuln/detail/CVE-2015-1838)
 
-This rule raises an issue whenever it detects a hard-coded path to a publicly writable directory like /tmp (see examples bellow). It also detects access to environment variables that point to publicly writable directories, e.g., TMP and TMPDIR.
+**ลองถามตัวเองดูr**
 
-* /tmp
-* /var/tmp
-* /usr/tmp
-* /dev/shm
-* /dev/mqueue
-* /run/lock
-* /var/run/lock
-* /Library/Caches
-* /Users/Shared
-* /private/tmp
-* /private/var/tmp
-* \Windows\Temp
-* \Temp
-* \TMP
+* ไฟล์ที่อ่านหรือถูกเขียนลงบนโฟล์เดอร์ที่เข้าถึงโดยสาธารณะ
+* แอปพลิเคชั่นสร้างไฟล์ที่สามารถคาดเดาชื่อไฟล์ลงบนโฟล์เดอร์ที่เข้าถึงโดยสาธารณะ
 
-**Ask Yourself Whether**
+มันเป็นความเสี่ยงหากคุณตอบใช่จากคำถามเหล่านี้
 
-* Files are read from or written into a publicly writable folder
-* The application creates files with predictable names into a publicly writable folder
-* There is a risk if you answered yes to any of those questions.
+**คำแนะนำในการเขียน Code ให้ปลอดภัย**
 
-**Recommended Secure Coding Practices**
+* ใช้งานโฟลเดอร์ย่อยเฉพาะด้วยการควบคุมสิทธิ์ที่แน่นหนา
+* ใช้การออกแบบ API ที่ปลอดภัยที่จะสร้างไฟล์ใช้งานชั่วคราว ดังนี้
+  * สร้างไฟล์ที่ไม่สามารถคาดเดาชื่อไฟล์ได้
+  * ไฟล์ที่อ่านและเขียนได้เฉพาะชื่อผู้ใช้งานที่สร้างไฟล์นั้น ๆ
+  * คำอธิบายหรือเนื้อหาของไฟล์จะไม่ถูกสืบทอดไปยัง child processes
+  * ไฟล์จะถูกทำลายโดยทันทีเมื่อถูกปิดการใช้งาน
 
-* Use a dedicated sub-folder with tightly controlled permissions
-* Use secure-by-design APIs to create temporary files. Such API will make sure:
-  * The generated filename is unpredictable
-  * The file is readable and writable only by the creating user ID
-  * The file descriptor is not inherited by child processes
-  * The file will be destroyed as soon as it is closed
-
-**Sensitive Code Example**
+**ตัวอย่างที่ไม่ปลอดภัย**
 ```
 const fs = require('fs');
 
@@ -62,7 +46,7 @@ fs.readFile(tmp_dir + "/temporary_file", 'utf8', function (err, data) {
 });
 ```
 
-**Compliant Solution**
+**แนวทางแก้ไขที่ถูกต้อง**
 
 ```
 const tmp = require('tmp');
