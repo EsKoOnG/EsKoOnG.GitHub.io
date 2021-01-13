@@ -88,4 +88,4 @@ app.use(csrf({ cookie: true, ignoreMethods: ["GET"] })); // Compliant
 
 **แหล่งที่มา**
 
-[<img src="/images/sonarqube.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-4502)
+[<img src="/images/SonarSourceRules.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-4502)
