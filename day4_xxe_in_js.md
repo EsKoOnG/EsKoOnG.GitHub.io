@@ -71,4 +71,4 @@ var xmlDoc = libxmljs.parseXmlString(xml); // Compliant: noent set to false by d
 
 **แหล่งที่มา**
 
-[<img src="/images/sonarqube.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-2755)
+[<img src="/images/SonarSourceRules.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-2755)
