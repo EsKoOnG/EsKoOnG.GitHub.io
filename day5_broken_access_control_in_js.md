@@ -79,4 +79,4 @@ const tmpobj = tmp.fileSync(); // Compliant
 
 **แหล่งที่มา**
 
-[<img src="/images/sonarqube.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-5443)
+[<img src="/images/SonarSourceRules.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-5443)
