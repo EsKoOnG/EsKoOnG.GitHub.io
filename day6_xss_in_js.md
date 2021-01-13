@@ -140,4 +140,4 @@ console.log(kramed('Attack [xss?](javascript:alert("xss")).', options));
 
 **แหล่งที่มา**
 
-[<img src="/images/sonarqube.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-5247)
+[<img src="/images/SonarSourceRules.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-5247)
