@@ -69,4 +69,4 @@ connection.connect();
 
 **แหล่งที่มา**
 
-[<img src="/images/sonarqube.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-2068)
+[<img src="/images/SonarSourceRules.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-2068)
