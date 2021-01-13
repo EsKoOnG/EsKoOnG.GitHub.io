@@ -77,4 +77,4 @@ pgcon.query('SELECT name FROM users WHERE id = $1', [userinput], (err, res) => {
 
 **แหล่งที่มา**
 
-[<img src="/images/sonarqube.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-2077)
+[<img src="/images/SonarSourceRules.svg" alt="SonarQube" height="50">](https://rules.sonarsource.com/javascript/RSPEC-2077)
