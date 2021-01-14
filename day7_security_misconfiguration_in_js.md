@@ -28,7 +28,7 @@
 
 **ตัวอย่างที่ไม่ปลอดภัย**
 
-[Express.js CSURF middleware](https://www.npmjs.com/package/csurf) protection is not found on an unsafe HTTP method like POST method:
+[Express.js CSURF middleware](https://www.npmjs.com/package/csurf) ไม่พบการป้องกันในการใช้ HTTP method ที่ไม่ปลอดภัย เช่น POST method:
 
 ```
 let csrf = require('csurf');
@@ -44,7 +44,7 @@ app.post('/money_transfer', parseForm, function (req, res) {
 });
 ```
 
-Protection provided by [Express.js CSURF middleware](https://www.npmjs.com/package/csurf) is globally disabled on unsafe methods:
+การป้องกันโดย [Express.js CSURF middleware](https://www.npmjs.com/package/csurf) ถูกปิดในการใช้ unsafe methods:
 
 ```
 let csrf = require('csurf');
@@ -55,7 +55,7 @@ app.use(csrf({ cookie: true, ignoreMethods: ["POST", "GET"] })); // Sensitive as
 
 **แนวทางแก้ไขที่ถูกต้อง**
 
-[Express.js CSURF middleware](https://www.npmjs.com/package/csurf) protection is used on unsafe methods:
+[Express.js CSURF middleware](https://www.npmjs.com/package/csurf) การป้องกันถูกใช้ใน HTTP method ที่ไม่ปลอดภัย:
 
 ```
 let csrf = require('csurf');
@@ -70,7 +70,7 @@ app.post('/money_transfer', parseForm, csrfProtection, function (req, res) { // 
 });
 ```
 
-Protection provided by [Express.js CSURF middleware](https://www.npmjs.com/package/csurf) is enabled on unsafe methods:
+การป้องกันโดย [Express.js CSURF middleware](https://www.npmjs.com/package/csurf) ถูกเปิดในการใช้ unsafe methods:
 
 ```
 let csrf = require('csurf');
