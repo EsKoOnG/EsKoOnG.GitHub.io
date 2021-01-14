@@ -5,27 +5,28 @@
 
 ## Disabling auto-escaping in template engines is security-sensitive
 
-To reduce the risk of cross-site scripting attacks, templating systems, such as Twig, Django, Smarty, Groovy's template engine, allow configuration of automatic variable escaping before rendering templates. When escape occurs, characters that make sense to the browser (eg: <a>) will be transformed/replaced with escaped/sanitized values (eg: & lt;a& gt; ).
+เพื่อลดความเสี่ยงจากการโจมตีด้วยเทคนิค cross-site scripting ในพวกระบบที่ใช่ Template เช่น Twig Django Smarty Groovy จะเปิดการใช้งาน variable escapin ก่อนที่ทำการ render template ขึ้นมา เมื่อฟังก์ชั่น escape ทำงาน ผลที่เกิดขึ้นคืออักขระที่ประมวลผลด้วย browser เช่น <a> จะถูกแปลงค่า หรือ แทนที่ ด้วยค่า escaped/sanitized เช่น & lt;a& gt;
 
-Auto-escaping is not a magic feature to annihilate all cross-site scripting attacks, it depends on the [strategy applied](https://twig.symfony.com/doc/3.x/filters/escape.html) and the context, for example a "html auto-escaping" strategy (which only transforms html characters into [html entities](https://developer.mozilla.org/en-US/docs/Glossary/Entity)) will not be relevant when variables are used in a [html attribute](https://en.wikipedia.org/wiki/HTML_attribute) because ':' character is not escaped and thus an attack as below is possible:
+Auto-escaping ไม่ใช่คุณสมบัติพิเศษที่จะสามารถทำลาย cross-site scripting ได้ทั้งหมด มันขึ้นอยู่กับวิธีการที่ใช้ [(strategy applied)](https://twig.symfony.com/doc/3.x/filters/escape.html) และบริบทของมัน, ตัวอย่างวิธีการ เช่น "html auto-escaping" (ที่จะเปลี่ยนตัวอักขระของ html ให้เป็น [html entities](https://developer.mozilla.org/en-US/docs/Glossary/Entity)) ที่จะไม่เป็นผลเมื่อตัวแปรถูกใช้ใน [html attribute](https://en.wikipedia.org/wiki/HTML_attribute) เพราะตัวอักขระ ':' จะไม่ถูก escaped ดังนั้นการโจมตีดังต่อไปนี้อาจจะเกิดขึ้นได้
 
 ```
 <a href="{{ myLink }}">link</a> // myLink = javascript:alert(document.cookie)
 <a href="javascript:alert(document.cookie)">link</a> // JS injection (XSS attack)
 ```
 
-**Ask Yourself Whether**
+**ลองถามตัวเองดู**
 
-* Templates are used to render web content and
-  * dynamic variables in templates come from untrusted locations or are user-controlled inputs
-  * there is no local mechanism in place to sanitize or validate the inputs.
-There is a risk if you answered yes to any of those questions.
+* Templates ถูกใช้เพื่อสร้างเว็บและแสดงผล
+  * ตัวแปรที่ไม่คงที่ใน templates มาจากแหล่งที่ไม่น่าเชื่อถือหรือผู้ใช้งานเป็นผู้กำหนดค่า inputs
+  * ระบบที่ไม่มีกลไกในการที่จะ sanitize หรือ validate ข้อมูลที่ input เข้ามา
+  
+มันเป็นความเสี่ยงหากคุณตอบใช่จากคำถามเหล่านี้
 
-**Recommended Secure Coding Practices**
+**คำแนะนำในการเขียน Code ให้ปลอดภัย**
 
-Enable auto-escaping by default and continue to review the use of inputs in order to be sure that the chosen auto-escaping strategy is the right one.
+เปิดใช้งาน auto-escaping โดยค่าเริ่มต้นและหมั่นตรวจสอบการใช้งาน input อยู่เสมอเพื่อให้แน่ใจว่าการเลือกใช้ auto-escaping แต่ละฟังก์ชั่นที่เหมาะสม
 
-**Sensitive Code Example**
+**ตัวอย่างที่ไม่ปลอดภัย**
 
 [mustache.js](https://www.npmjs.com/package/mustache) template engine:
 ```
@@ -78,7 +79,7 @@ var options = {
 };
 ```
 
-**Compliant Solution**
+**แนวทางแก้ไขที่ถูกต้อง**
 
 [mustache.js](https://www.npmjs.com/package/mustache) template engine:
 ```
@@ -129,7 +130,7 @@ let options = {
 console.log(kramed('Attack [xss?](javascript:alert("xss")).', options));
 ```
 
-**See**
+**เพิ่มเติม**
 
 * [OWASP Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md) - XSS Prevention Cheat Sheet
 * [OWASP Top 10 2017 Category A7](https://www.owasp.org/index.php/Top_10-2017_A7-Cross-Site_Scripting_(XSS)) - Cross-Site Scripting (XSS)
