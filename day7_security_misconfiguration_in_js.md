@@ -5,28 +5,28 @@
 
 ## Disabling CSRF protections is security-sensitive
 
-Cross-site request forgery (CSRF) vulnerabilities occur when attackers can trick a user to perform sensitive authenticated operations on a web application without his consent.
+ช่องโหว่ Cross-site request forgery (CSRF) จะเกิดขึ้นเมื่อผู้โจมตีสามารถหลอกผู้ใช้งานให้ทำการยืนยันตัวตนบนเว็บแอปพลิเคชั่นโดยเขาไม่ได้ยินยอม.
 
-Imagine a web application where an authenticated user can do actions like changing his email address and which has no CSRF protection. A malicious website could forge a web page form to send the HTTP request that change the user email. When the user visits the malicious web page, the form is automatically submitted in his name and his account email is changed to an arbitrary email.
+ลองนึกภาพว่าเว็บแอปพลิเคชั่นที่เมื่อมีการยืนยันตัวตนแล้ว ผู้ใช้งานสามารถทำกิจกรรมบางอย่างได้ เช่น เปลี่ยนแปลงอีเมล์ และเมื่อไม่มีการป้องกัน CSRF เว็บที่ไม่ประสงค์ดีอาจจะปลอมแปลงเว็บฟอร์มเพื่อร้องขอให้ผู้ใช้งานเปลี่ยนแปลงอีเมล์ของพวกเขา และเมื่อผู้ใช้งานเข้าใช้งานเว็บไซต์ที่ปลอมแปลงขึ้นมา ตัวฟอร์มจะเก็บข้อมูลชื่อและอีเมล์โดยอัตโนมัติและจะโดนเปลี่ยนไปโดยพลการ
 
-Such an attack is only possible if the web browser automatically sends authentication information to the trusted domain (e.g cookie based authentication)
+อย่างการโจมตีอย่างเดียวที่เกิดขึ้นได้ถ้าเว็บเบราเซอร์ส่งข้อมูลยืนยันตัวตนโดยอัตโนมัติไปยังโดนเมนที่น่าเชื่อถือ เช่น cookie based authentication
 
-**Ask Yourself Whether**
+**ลองถามตัวเองดู**
 
-* The web application uses cookies to authenticate users.
-* There exist sensitive operations in the web application that can be performed when the user is authenticated.
-* The state / resources of the web application can be modified by doing HTTP POST or HTTP DELETE requests for example.
+* เว็บแอปพลิเคชั่นใช้คุกกี้ในการยืนยันตัวตนผู้ใช้งาน
+* มีขั้นตอนที่ละเอียดอ่อนในเว็บแอปพลิเคชั่นที่เกิดขึ้นเมื่อผู้ใช้งานดำเนินการยืนยันตัวตน
+* สถานะหรือทรัพยากรของเว็บแอปพลิเคชั่นสามารถแก้ไขได้ด้วยเช่น คำขอ HTTP POST หรือ HTTP DELETE เป็นต้น
 
-There is a risk if you answered yes to any of those questions.
+มันเป็นความเสี่ยงหากคุณตอบว่า "ใช่" จากคำถามข้างต้น
 
-**Recommended Secure Coding Practices**
+**คำแนะนำในการเขียน Code ให้ปลอดภัย**
 
-* Protection against CSRF attacks is strongly recommended:
-  * to be activated by default for all [unsafe HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Safe_methods) methods.
-  * implemented, for example, with an unguessable CSRF token
-* Of course all sensitive operations should not be performed with [safe HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Safe_methods) methods like GET which are designed to be used only for information retrieval.
+* การป้องกันการโจมตี CSRF ที่แนะนำเป็นอย่างยิ่ง:
+  * เปิดใช้งานการป้องกันเป็นค่าเริ่มต้นพวก Method ที่ไม่ปลอดภัย [unsafe HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Safe_methods)
+  * มีการใช้งานการป้องกัน เช่น การใช้งาน CSRF token ที่ไม่สามารถคาดเดาได้
+* แน่นอนว่ากระบวนการที่ละเอียดอ่อนไม่ควรใช้ method โดย [safe HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Safe_methods) เช่น GET ถูกออกแบบมาเพื่อรับข้อมูลเท่านั้น
 
-**Sensitive Code Example**
+**ตัวอย่างที่ไม่ปลอดภัย**
 
 [Express.js CSURF middleware](https://www.npmjs.com/package/csurf) protection is not found on an unsafe HTTP method like POST method:
 
@@ -53,7 +53,7 @@ let express = require('express');
 app.use(csrf({ cookie: true, ignoreMethods: ["POST", "GET"] })); // Sensitive as POST is unsafe method
 ```
 
-**Compliant Solution**
+**แนวทางแก้ไขที่ถูกต้อง**
 
 [Express.js CSURF middleware](https://www.npmjs.com/package/csurf) protection is used on unsafe methods:
 
@@ -79,7 +79,7 @@ let express = require('express');
 app.use(csrf({ cookie: true, ignoreMethods: ["GET"] })); // Compliant
 ```
 
-**See**
+**เพิ่มเติม**
 
 * [MITRE, CWE-352](https://cwe.mitre.org/data/definitions/352.html) - Cross-Site Request Forgery (CSRF)
 * [OWASP Top 10 2017 Category A6](https://www.owasp.org/index.php/Top_10-2017_A6-Security_Misconfiguration) - Security Misconfiguration
