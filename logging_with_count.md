@@ -1,3 +1,8 @@
+# Dummy system to learn about logging activity
+
+### logging_with_count.py
+
+'''
 import time
 def logging():
     f.write('Username : '+username+'\n')
@@ -24,3 +29,4 @@ while count < 3:
         f.write('!'*40+'\n')
         f.close()
         print('Login Failed ('+str(count)+')')
+'''
