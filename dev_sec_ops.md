@@ -2,7 +2,7 @@
 # DevSecOps : Integrating security to DevOps
 
 ## What's DevSecOps?
-[![image](https://user-images.githubusercontent.com/74785668/110267816-26d1db80-7ff3-11eb-8dd7-05f20f461b10.png)](https://www.youtube.com/embed/OGV-z2xh09A "What Is DevSecOps?")
+[![image](https://user-images.githubusercontent.com/74785668/110419274-974c2b80-80cb-11eb-9cf6-ef693f16a67b.png)](https://www.youtube.com/embed/OGV-z2xh09A "What Is DevSecOps?")
 Reference : [What Is DevSecOps? Move Fast and Stay Secure with DevSecOps | Synopsys](https://www.youtube.com/embed/OGV-z2xh09A "Synopsys")
 
 ก่อนอื่นต้องขอเกริ่นที่มาที่ไปของแนวทางในการดำเนินงานของการพัฒนาซอฟต์แวร์ขึ้นมาก่อน ว่าที่มาของคำว่า "DevOps" คืออะไร ในการเขียนโปรแกรมเราจำเป็นต้องมี Developer ที่จะทำหน้าที่ในการเขียน Code และประกอบกันจนกลายมาเป็น Application ให้เราได้ใช้งานกัน แต่การที่จะเอา Application มาใช้งานก็ต้องมีการเตรียมระบบ การติดตั้ง การสนับสนุนการใช้งาน ก็จะเป็นหน้าที่ของ Operations และโดยการหลักการนี้ก็จะแบ่งการทำงานกันโดยชัดเจน ซึ่งก็ดูจะไม่มีปัญหาอะไรแต่แท้จริงแล้วบ่อยครั้ง ที่ทีม Developers เขียน Code มาแล้วกว่าจะปล่อยออกมาให้ใช้งานได้ต้องรอทีม Operations เตรียมระบบกว่าจะได้ทดสอบ กว่าจะได้ปล่อยออกให้ลูกค้าใช้งาน ก็อาจจะไม่เร็วพอในการแข่งขันธุรกิจ หรือในมุมกลับกันทีม Operations ไม่สามารถติดตั้ง Application ได้ หรือติดตั้งได้ นำมาใช้งานก็เจอแต่ปัญหาให้แก้ พอแจ้งไปทาง Developers ก็ได้คำตอบว่าบนระบบของ Development ไม่มีปัญหาอะไร เป็นปัญหาที่ระบบ 
